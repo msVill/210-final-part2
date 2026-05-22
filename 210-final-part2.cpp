@@ -20,6 +20,7 @@
 #include <list>
 #include <cstdlib>
 #include <ctime>
+#include <iomanip>
 
 const std::string NAMES[] = {
         "Alice",   "Bob",     "Carol",   "Dave",    "Eve",
@@ -50,6 +51,8 @@ const std::string NAMES[] = {
     "Almond Cherry",   "Raspberry White Choc", "Coconut Lime"
     };
 
+    const int MUFFIN_COUNT = 15;
+
     const std::string BRACELETS[] {
         "Rainbow Beaded",  "Woven Hemp",      "Silver Chain",
     "Custom Name Tag", "Knot Macrame",    "Gold Charm",
@@ -58,6 +61,8 @@ const std::string NAMES[] = {
     "Evil Eye Charm",  "Birthstone Band", "Infinity Knot"
     };
 
+    const int BRACELET_COUNT = 15;
+
     const std::string COOKIES[] = {
         "Chocolate Chip",  "Snickerdoodle",   "Oatmeal Raisin",
     "Peanut Butter",   "Sugar",           "Double Fudge",
@@ -65,6 +70,16 @@ const std::string NAMES[] = {
     "Lemon Butter",    "Molasses",        "Almond Biscotti",
     "Salted Caramel",  "Red Velvet",      "Funfetti"
     };
+
+    const int COOKIE_COUNT = 15;
+
+    std::string randomName() { return NAMES[ rand() % NAME_COUNT]; }
+    std::string randomDrink() { return DRINKS[ rand() % DRINK_COUNT]; }
+    std::string randomMuffin() { return MUFFINS[ rand() & MUFFIN_COUNT]; }
+    std::string randomBracelet() { return BRACELETS[ rand() % BRACELET_COUNT]; }
+    std::string randomCookie() { return COOKIES[ rand() % COOKIE_COUNT]; }
+
+    bool coinFlip() {  }
 
 struct Node {
     std::string customerName;
