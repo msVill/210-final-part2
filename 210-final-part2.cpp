@@ -29,7 +29,7 @@ const std::string NAMES[] = {
     "Uma",     "Victor",  "Wendy",   "Xander",  "Yara",
     "Zoe",     "Aaron",   "Bella",   "Carlos",  "Diana"
     };
-
+ 
     const int NAME_COUNT = 30;
 
     const std::string DRINKS[] = {
@@ -41,6 +41,30 @@ const std::string NAMES[] = {
     };
 
     const int DRINK_COUNT = 15;
+
+    const std::string MUFFINS[] {
+        "Blueberry",       "Chocolate Chip",  "Banana Nut",
+    "Lemon Poppy",     "Pumpkin",         "Cinnamon Sugar",
+    "Double Chocolate","Cranberry Orange", "Carrot Walnut",
+    "Strawberry",      "Peach Pecan",     "Maple Bacon",
+    "Almond Cherry",   "Raspberry White Choc", "Coconut Lime"
+    };
+
+    const std::string BRACELETS[] {
+        "Rainbow Beaded",  "Woven Hemp",      "Silver Chain",
+    "Custom Name Tag", "Knot Macrame",    "Gold Charm",
+    "Star Pattern",    "Turquoise Beaded","Leather Wrap",
+    "Pearl Strand",    "Morse Code",      "Braided Cotton",
+    "Evil Eye Charm",  "Birthstone Band", "Infinity Knot"
+    };
+
+    const std::string COOKIES[] = {
+        "Chocolate Chip",  "Snickerdoodle",   "Oatmeal Raisin",
+    "Peanut Butter",   "Sugar",           "Double Fudge",
+    "Shortbread",      "White Chocolate Macadamia", "Gingersnap",
+    "Lemon Butter",    "Molasses",        "Almond Biscotti",
+    "Salted Caramel",  "Red Velvet",      "Funfetti"
+    };
 
 struct Node {
     std::string customerName;
