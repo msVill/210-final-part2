@@ -157,13 +157,23 @@ void runCoffeeRound(CoffeeQueue& q) {
 }
 
 void runMuffinRound(std::deque<Customer>& q) {
-    std::cout << "   Muffins    | ";
+    std::cout << "  Muffins  | ";
 
     if(!q.empty()) {
         std::cout << "Served: " << q.front().first
             << "  (" << q.front().second << ")";
         q.pop_front();
+    } else {
+        std::cout << "Queue empty - no one served";
     }
+    if(coinFlip()) {
+        Customer c = makeCustomer(randomName(), randomMuffin());
+        q.push_back(c);
+        std::cout << "  | Joined: " << c.first << " (" << c.second << ")";
+    }else {
+        std::cout << "  | No one joined";
+    }
+    std::cout<<"\n";
 }
 
 int main() {
@@ -172,17 +182,22 @@ int main() {
     const int INIT_CUSTOMERS = 3;
 
     CoffeeQueue coffeeQ;
+    std::deque<Customer> muffinQ;
+    std::vector<Customer> braceletQ;
+    std::list<Customer> cookieQ;
 
     std:: cout << "Initializing queues with "
             << INIT_CUSTOMERS << " customers each...\n";
 
     for(int i = 0; i < INIT_CUSTOMERS; ++i) {
         coffeeQ.addCustomer(randomName(), randomDrink());
+        coffeeQ.addCustomer(randomName(), randomDrink());
     }
 
     for(int round = 1; round <= ROUNDS; ++round) {
         printHeader(round);
         runCoffeeRound(coffeeQ);
+        runMuffinRound(muffinQ);
     }
     std::cout<<"\nSimulation complete\n";
 
