@@ -57,6 +57,36 @@ struct CoffeeQueue {
     int size;
 
     CoffeeQueue() : head(NULL), tail(NULL), size(0) {}
+
+    bool isEmpty() const { return head == NULL; }
+
+    void addCustomer(const std::string& name, const std::string& order) {
+        Node* newNode = new Node(name, order);
+        if(tail != NULL) tail->next = newNode;
+        else head = newNode;
+        tail = newNode;
+        ++size;
+    }
+
+    bool dequeue(std::string& nameOut, std::string& orderOut) {
+        if(isEmpty()) return false;
+        nameOut = head->customerName;
+        orderOut = head->order;
+        Node* old = head;
+        head = head->next;
+        if(head == NULL) tail = NULL;
+        delete old;
+        --size;
+        return true;
+    }
+
+    ~CoffeeQueue() {
+        while(head != NULL) {
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+        }
+    }
 };
 
 
