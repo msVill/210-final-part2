@@ -70,6 +70,7 @@ const std::string NAMES[] = {
         std::cout << "==========================================\n";
     }
 
+
 struct Node {
     std::string customerName;
     std::string order;
@@ -146,7 +147,7 @@ void runMuffinRound(std::deque<Customer>& q) {
 
     if(!q.empty()) {
         std::cout << "Served: " << q.front().first
-            << "  (" << q.front().second << ")";
+            << " (" << q.front().second << ")";
         q.pop_front();
     } else {
         std::cout << "Queue empty - no one served";
