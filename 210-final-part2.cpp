@@ -152,10 +152,29 @@ void runCoffeeRound(CoffeeQueue& q) {
     } else {
             std:: cout << "  | No one joined";
     }
+    std:: cout << "\n";
 
 }
 
 int main() {
+    srand(static_cast<unsigned int>(time(NULL)));
+    const int ROUNDS = 10;
+    const int INIT_CUSTOMERS = 3;
+
+    CoffeeQueue coffeeQ;
+
+    std:: cout << "Initializing queues with "
+            << INIT_CUSTOMERS << " customers each...\n";
+
+    for(int i = 0; i < INIT_CUSTOMERS; ++i) {
+        coffeeQ.addCustomer(randomName(), randomDrink());
+    }
+
+    for(int round = 1; round <= ROUNDS; ++round) {
+        printHeader(round);
+        runCoffeeRound(coffeeQ);
+    }
+    std::cout<<"\nSimulation complete\n";
 
     return 0;
 }
