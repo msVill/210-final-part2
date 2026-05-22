@@ -79,7 +79,11 @@ const std::string NAMES[] = {
     std::string randomBracelet() { return BRACELETS[ rand() % BRACELET_COUNT]; }
     std::string randomCookie() { return COOKIES[ rand() % COOKIE_COUNT]; }
 
-    bool coinFlip() {  }
+    bool coinFlip() { return rand() % 2 == 0; }
+    void printHeader(int round) { 
+        std::cout << "\n";
+        std::cout << "==========================================\n";
+    }
 
 struct Node {
     std::string customerName;
@@ -128,6 +132,10 @@ struct CoffeeQueue {
     }
 };
 
+typedef std::pair<std::string, std::string> Customer;
+Customer makeCustomer(const std::string& name, const std::string& order) {
+    return std::make_pair(name, order);
+}
 
 int main() {
 
