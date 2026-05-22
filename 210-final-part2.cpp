@@ -21,14 +21,46 @@
 #include <cstdlib>
 #include <ctime>
 
+const std::string NAMES[] = {
+        "Alice",   "Bob",     "Carol",   "Dave",    "Eve",
+    "Frank",   "Grace",   "Hank",    "Ivy",     "Jake",
+    "Kara",    "Leo",     "Mia",     "Nate",    "Olivia",
+    "Pedro",   "Quinn",   "Rachel",  "Sam",     "Tina",
+    "Uma",     "Victor",  "Wendy",   "Xander",  "Yara",
+    "Zoe",     "Aaron",   "Bella",   "Carlos",  "Diana"
+    };
+
+    const int NAME_COUNT = 30;
+
+    const std::string DRINKS[] = {
+        "Latte",          "Espresso",       "Cappuccino",
+    "Cold Brew",      "Mocha",          "Americano",
+    "Flat White",     "Macchiato",      "Cortado",
+    "Oat Milk Latte", "Vanilla Latte",  "Caramel Macchiato",
+    "Irish Coffee",   "Chai Latte",     "Matcha Latte"
+    };
+
+    const int DRINK_COUNT = 15;
+
 struct Node {
     std::string customerName;
     std::string order;
     Node* next;
+
+    Node(const std::string& name, const std::string& ord)
+        : customerName(name), order(ord), next(NULL) {}
 };
 
 struct CoffeeQueue {
-    Node* head;
+    Node* head;;
     Node* tail;
     int size;
+
+    CoffeeQueue() : head(NULL), tail(NULL), size(0) {}
 };
+
+
+int main() {
+
+    return 0;
+}
