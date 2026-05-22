@@ -123,7 +123,7 @@ Customer makeCustomer(const std::string& name, const std::string& order) {
 }
 
 void runCoffeeRound(CoffeeQueue& q) {
-    std:: cout << "  Coffee   | ";
+    std:: cout << "  Coffee    | ";
     std::string name, order;
     if( q.dequeue(name, order))
     std:: cout << "Served: " << name << " (" << order << ")";
@@ -142,7 +142,7 @@ void runCoffeeRound(CoffeeQueue& q) {
 }
 
 void runMuffinRound(std::deque<Customer>& q) {
-    std::cout << "  Muffins  | ";
+    std::cout << "  Muffins   | ";
 
     if(!q.empty()) {
         std::cout << "Served: " << q.front().first
@@ -182,6 +182,26 @@ void runBraceletRound(std::vector<Customer>& q) {
     std::cout << "\n";
 }
 
+void runCookieRound(std::list<Customer>& q) {
+    std:: cout << "  Cookies   | ";
+    if(!q.empty()) {
+        std::cout << "Served: " << q.front().first
+        << " (" << q.front().second << ")";
+        
+    } else {
+        std::cout << "Queue empty - no one served";
+    }
+
+    if(coinFlip()) {
+        Customer c = makeCustomer(randomName(), randomBracelet());
+        q.push_back(c);
+        std::cout << "  | Joined: " << c.first << " (" << c.second << ")";
+    } else {
+        std::cout << "  | No one joined";
+    }
+    std::cout << "\n";
+}
+
 int main() {
     srand(static_cast<unsigned int>(time(NULL)));
     const int ROUNDS = 10;
@@ -190,7 +210,7 @@ int main() {
     CoffeeQueue coffeeQ;
     std::deque<Customer> muffinQ;
     std::vector<Customer> braceletQ;
-   // std::list<Customer> cookieQ;
+    std::list<Customer> cookieQ;
 
     std:: cout << "Initializing queues with "
             << INIT_CUSTOMERS << " customers each...\n";
@@ -199,6 +219,7 @@ int main() {
         coffeeQ.addCustomer(randomName(), randomDrink());
         muffinQ.push_back(makeCustomer(randomName(), randomMuffin()));
         braceletQ.push_back(makeCustomer(randomName(), randomBracelet()));
+        cookieQ.push_back(makeCustomer(randomName(), randomCookie()));
     }
 
     for(int round = 1; round <= ROUNDS; ++round) {
@@ -206,6 +227,7 @@ int main() {
         runCoffeeRound(coffeeQ);
         runMuffinRound(muffinQ);
         runBraceletRound(braceletQ);
+        runCookieRound(cookieQ);
     }
     std::cout<<"\nSimulation complete\n";
 
