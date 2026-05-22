@@ -138,7 +138,7 @@ Customer makeCustomer(const std::string& name, const std::string& order) {
 }
 
 void runCoffeeRound(CoffeeQueue& q) {
-    std:: cout << "  Coffee   ";
+    std:: cout << "  Coffee   | ";
     std::string name, order;
     if( q.dequeue(name, order))
     std:: cout << "Served: " << name << " (" << order << ")";
@@ -148,12 +148,22 @@ void runCoffeeRound(CoffeeQueue& q) {
     if(coinFlip()) {
         std::string n = randomName(), o = randomDrink();
         q.addCustomer(n, o);
-        std:: cout << "  | Joined: " << n <<  " (" << o << ")";
+        std:: cout << " | Joined: " << n <<  " (" << o << ")";
     } else {
-            std:: cout << "  | No one joined";
+            std:: cout << " | No one joined";
     }
     std:: cout << "\n";
 
+}
+
+void runMuffinRound(std::deque<Customer>& q) {
+    std::cout << "   Muffins    | ";
+
+    if(!q.empty()) {
+        std::cout << "Served: " << q.front().first
+            << "  (" << q.front().second << ")";
+        q.pop_front();
+    }
 }
 
 int main() {
