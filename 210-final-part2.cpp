@@ -1,18 +1,3 @@
-/*
-    Vendor Booths = 4.
-    1. Coffee -> singly linked list struct/Node
-    2. Muffins -> std::deque
-    3. Bracelets -> std::vector
-    4. Smoothies -> std::list
-
-    Simulation rules:
-     - Run 10 times/rounds
-     - Queue starts with 3 customres
-     - Each round: Front customer is always served (if any in line), and 50% chance someone joins
-     - I need to use rand() i believe, for the customer's data
-
-*/
-
 #include <iostream>
 #include <string>
 #include <deque>
@@ -176,6 +161,27 @@ void runMuffinRound(std::deque<Customer>& q) {
     std::cout<<"\n";
 }
 
+void runBraceletRound(std::vector<Customer>& q) {
+    std::cout << "  Bracelets | ";
+
+    if(!q.empty()) {
+        std::cout << "Served: " << q.front().first
+        << " (" << q.front().second << ")";
+        
+    } else {
+        std::cout << "Queue empty - no one served";
+    }
+
+    if(coinFlip()) {
+        Customer c = makeCustomer(randomName(), randomBracelet());
+        q.push_back(c);
+        std::cout << "  | Joined: " << c.first << " (" << c.second << ")";
+    } else {
+        std::cout << "  | No one joined";
+    }
+    std::cout << "\n";
+}
+
 int main() {
     srand(static_cast<unsigned int>(time(NULL)));
     const int ROUNDS = 10;
@@ -184,20 +190,22 @@ int main() {
     CoffeeQueue coffeeQ;
     std::deque<Customer> muffinQ;
     std::vector<Customer> braceletQ;
-    std::list<Customer> cookieQ;
+   // std::list<Customer> cookieQ;
 
     std:: cout << "Initializing queues with "
             << INIT_CUSTOMERS << " customers each...\n";
 
     for(int i = 0; i < INIT_CUSTOMERS; ++i) {
         coffeeQ.addCustomer(randomName(), randomDrink());
-        coffeeQ.addCustomer(randomName(), randomDrink());
+        muffinQ.push_back(makeCustomer(randomName(), randomMuffin()));
+        braceletQ.push_back(makeCustomer(randomName(), randomBracelet()));
     }
 
     for(int round = 1; round <= ROUNDS; ++round) {
         printHeader(round);
         runCoffeeRound(coffeeQ);
         runMuffinRound(muffinQ);
+        runBraceletRound(braceletQ);
     }
     std::cout<<"\nSimulation complete\n";
 
