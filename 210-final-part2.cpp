@@ -137,6 +137,24 @@ Customer makeCustomer(const std::string& name, const std::string& order) {
     return std::make_pair(name, order);
 }
 
+void runCoffeeRound(CoffeeQueue& q) {
+    std:: cout << "  Coffee   ";
+    std::string name, order;
+    if( q.dequeue(name, order))
+    std:: cout << "Served: " << name << " (" << order << ")";
+    else
+        std:: cout << "Queue empty - no one served";
+        
+    if(coinFlip()) {
+        std::string n = randomName(), o = randomDrink();
+        q.addCustomer(n, o);
+        std:: cout << "  | Joined: " << n <<  " (" << o << ")";
+    } else {
+            std:: cout << "  | No one joined";
+    }
+
+}
+
 int main() {
 
     return 0;
